@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html class="light" lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>People's Priorities - Government Analytics Platform</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+            rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet">
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        "colors": {
+                            "surface-container-high": "#dce9ff",
+                            "tertiary": "#1b2227",
+                            "secondary-fixed": "#d6e3ff",
+                            "inverse-primary": "#aec7f7",
+                            "primary-container": "#1b365d",
+                            "on-primary-fixed-variant": "#2e476f",
+                            "on-error": "#ffffff",
+                            "tertiary-fixed": "#dde3eb",
+                            "outline-variant": "#c4c6cf",
+                            "secondary-container": "#63a1ff",
+                            "primary": "#002046",
+                            "on-surface-variant": "#44474e",
+                            "surface-dim": "#cbdbf5",
+                            "surface": "#f8f9ff",
+                            "inverse-surface": "#213145",
+                            "primary-fixed": "#d6e3ff",
+                            "error-container": "#ffdad6",
+                            "on-secondary-fixed": "#001b3d",
+                            "surface-container-low": "#eff4ff",
+                            "secondary": "#005db6",
+                            "on-primary": "#ffffff",
+                            "on-tertiary-fixed": "#161c22",
+                            "outline": "#74777f",
+                            "on-primary-container": "#87a0cd",
+                            "inverse-on-surface": "#eaf1ff",
+                            "on-background": "#0b1c30",
+                            "secondary-fixed-dim": "#a9c7ff",
+                            "on-secondary": "#ffffff",
+                            "surface-tint": "#465f88",
+                            "on-tertiary-container": "#99a0a7",
+                            "error": "#ba1a1a",
+                            "surface-container-highest": "#d3e4fe",
+                            "on-secondary-container": "#00376f",
+                            "on-primary-fixed": "#001b3d",
+                            "tertiary-fixed-dim": "#c1c7cf",
+                            "surface-container-lowest": "#ffffff",
+                            "surface-bright": "#f8f9ff",
+                            "background": "#f8f9ff",
+                            "on-tertiary-fixed-variant": "#41474e",
+                            "on-surface": "#0b1c30",
+                            "on-tertiary": "#ffffff",
+                            "on-secondary-fixed-variant": "#00468c",
+                            "on-error-container": "#93000a",
+                            "surface-container": "#e5eeff",
+                            "tertiary-container": "#30373d",
+                            "primary-fixed-dim": "#aec7f7",
+                            "surface-variant": "#d3e4fe"
+                        },
+                        "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                        },
+                        "spacing": {
+                            "stack-md": "16px",
+                            "base-unit": "4px",
+                            "stack-sm": "8px",
+                            "margin-mobile": "16px",
+                            "margin-desktop": "32px",
+                            "gutter": "24px",
+                            "stack-lg": "32px",
+                            "container-max-width": "1280px"
+                        },
+                        "fontFamily": {
+                            "body-md": ["Inter"],
+                            "body-lg": ["Inter"],
+                            "label-sm": ["Inter"],
+                            "headline-xl-mobile": ["Inter"],
+                            "headline-md": ["Inter"],
+                            "headline-lg": ["Inter"],
+                            "body-sm": ["Inter"],
+                            "label-md": ["Inter"],
+                            "headline-xl": ["Inter"]
+                        },
+                        "fontSize": {
+                            "body-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+                            "body-lg": ["18px", { "lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+                            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                            "headline-xl-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                            "body-sm": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+                            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                            "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                        }
+                    },
+                },
+            }
+        </script>
+        <style>
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+
+            .material-symbols-outlined {
+                font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+                vertical-align: middle;
+            }
+
+            .hero-pattern {
+                background-color: #f8f9ff;
+                background-image: radial-gradient(#d3e4fe 0.5px, transparent 0.5px);
+                background-size: 24px 24px;
+            }
+        </style>
+    </head>
+
+    <body class="bg-background text-on-background min-h-screen flex flex-col">
+        <!-- Navbar -->
+        <header class="bg-white border-b border-outline-variant sticky top-0 z-50">
+            <div class="max-w-container-max-width mx-auto px-margin-desktop h-16 flex justify-between items-center">
+
+                <!-- Left Side -->
+                <div class="flex items-center gap-10">
+
+                    <!-- Logo -->
+                    <div class="text-headline-md font-headline-xl text-primary flex items-center gap-2">
+                        <span class="material-symbols-outlined"
+                            style="font-variation-settings:'FILL' 1;">account_balance</span>
+                        People's Priorities AI
+                    </div>
+
+                    <!-- Navigation -->
+                    <nav class="hidden lg:flex items-center gap-8">
+                        <a class="text-body-sm font-bold text-primary border-b-2 border-primary py-5">
+                            Home
+                        </a>
+
+                        <a class="text-body-sm font-medium text-on-surface-variant hover:text-primary transition-colors"
+                            href="{{url_for('about')}}">
+                            About
+                        </a>
+
+                        <a class="text-body-sm font-medium text-on-surface-variant hover:text-primary transition-colors"
+                            href="#">
+                            Contact
+                        </a>
+                    </nav>
+
+                </div>
+
+                <!-- Right Side -->
+                <div class="flex items-center gap-4">
+
+                    <div class="h-6 w-px bg-outline-variant"></div>
+
+                    <a href="{{url_for('citizen_login')}}">
+                        <button class="text-body-sm font-semibold text-primary hover:underline">
+                            Citizen Login
+                        </button>
+                    </a>
+
+                    <a href="{{url_for('admin_login')}}">
+                        <button
+                            class="bg-primary text-on-primary px-4 py-2 rounded-lg text-body-sm font-semibold hover:opacity-90 transition-opacity">
+                            MP/Admin Login
+                        </button>
+                    </a>
+
+                </div>
+
+            </div>
+        </header>
+
+        <main>
+            <!-- Hero Section -->
+            <section class="hero-pattern py-20 lg:py-28">
+                <div
+                    class="max-w-container-max-width mx-auto px-margin-desktop grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h1 class="text-headline-xl font-bold text-primary leading-tight mb-6">
+                            Transform Citizen Voices into <span class="text-secondary">Smart Development</span>
+                            Decisions
+                        </h1>
+                        <p class="text-body-lg text-on-surface-variant mb-10 max-w-xl">
+                            An AI-powered platform that helps citizens submit development suggestions and assists MPs in
+                            making data-driven constituency planning decisions.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="{{url_for('citizen_login')}}">
+                                <button
+                                    class="bg-primary text-on-primary px-8 py-3.5 rounded-lg text-body-md font-bold shadow-sm hover:shadow-md transition-all">
+                                    Citizen Login
+                                </button></a>
+                            <a href="{{url_for('admin_login')}}">
+                                <button
+                                    class="bg-white border border-outline-variant text-primary px-8 py-3.5 rounded-lg text-body-md font-bold hover:bg-surface-container-low transition-all">
+                                    MP/Admin Login
+                                </button></a>
+                        </div>
+                    </div>
+                    <!-- AI Recommendation Panel -->
+                    <div class="lg:pl-8">
+                        <div class="bg-white rounded-lg border border-outline-variant shadow-lg p-8">
+                            <div class="flex items-center gap-2 text-secondary mb-6">
+                                <span class="material-symbols-outlined">auto_awesome</span>
+                                <span class="text-label-md font-bold uppercase tracking-wider">AI Recommendation</span>
+                            </div>
+                            <div class="mb-6 pb-6 border-b border-outline-variant">
+                                <h3 class="text-headline-md text-primary mb-1">Road Repair - Ward 12</h3>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-body-sm text-on-surface-variant">Priority Score:</span>
+                                    <span class="text-headline-md font-bold text-error">94/100</span>
+                                </div>
+                            </div>
+                            <div class="space-y-4 mb-8">
+                                <div class="flex gap-3">
+                                    <span class="material-symbols-outlined text-secondary">check_circle</span>
+                                    <span class="text-body-md text-on-surface">High demand from 2,400+ residents</span>
+                                </div>
+                                <div class="flex gap-3">
+                                    <span class="material-symbols-outlined text-secondary">check_circle</span>
+                                    <span class="text-body-md text-on-surface">Proximity to Primary School (200m)</span>
+                                </div>
+                                <div class="flex gap-3">
+                                    <span class="material-symbols-outlined text-secondary">check_circle</span>
+                                    <span class="text-body-md text-on-surface">Safety concern: Frequent
+                                        waterlogging</span>
+                                </div>
+                            </div>
+                            <div class="bg-surface-container-low p-4 rounded-lg flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary">info</span>
+                                <p class="text-body-sm font-semibold text-primary">Recommendation: Immediate Action
+                                    Recommended</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Core Feature Highlights -->
+            <section class="py-20 bg-white">
+                <div class="max-w-container-max-width mx-auto px-margin-desktop">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div
+                            class="p-6 border border-outline-variant rounded-lg hover:border-secondary transition-colors group">
+                            <span
+                                class="material-symbols-outlined text-secondary mb-4 text-3xl group-hover:scale-110 transition-transform">forum</span>
+                            <h4 class="text-body-md font-bold text-primary mb-1">Voice Submission</h4>
+                            <p class="text-body-sm text-on-surface-variant">Easy suggestion input portal.</p>
+                        </div>
+                        <div
+                            class="p-6 border border-outline-variant rounded-lg hover:border-secondary transition-colors group">
+                            <span
+                                class="material-symbols-outlined text-secondary mb-4 text-3xl group-hover:scale-110 transition-transform">add_a_photo</span>
+                            <h4 class="text-body-md font-bold text-primary mb-1">Photo Upload</h4>
+                            <p class="text-body-sm text-on-surface-variant">Visual evidence for issues.</p>
+                        </div>
+                        <div
+                            class="p-6 border border-outline-variant rounded-lg hover:border-secondary transition-colors group">
+                            <span
+                                class="material-symbols-outlined text-secondary mb-4 text-3xl group-hover:scale-110 transition-transform">translate</span>
+                            <h4 class="text-body-md font-bold text-primary mb-1">Multilingual Support</h4>
+                            <p class="text-body-sm text-on-surface-variant">Available in regional languages.</p>
+                        </div>
+                        <div
+                            class="p-6 border border-outline-variant rounded-lg hover:border-secondary transition-colors group">
+                            <span
+                                class="material-symbols-outlined text-secondary mb-4 text-3xl group-hover:scale-110 transition-transform">bar_chart</span>
+                            <h4 class="text-body-md font-bold text-primary mb-1">AI Priority Ranking</h4>
+                            <p class="text-body-sm text-on-surface-variant">Automated urgency analysis.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Workflow Section -->
+            <section class="py-20 bg-surface-container-low/30">
+                <div class="max-w-container-max-width mx-auto px-margin-desktop text-center mb-12">
+                    <h2 class="text-headline-lg text-primary font-bold">Efficient Governance Workflow</h2>
+                </div>
+                <div class="max-w-container-max-width mx-auto px-margin-desktop">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                        <!-- Step 1 -->
+                        <div class="flex flex-col items-center text-center">
+                            <div
+                                class="w-12 h-12 bg-white text-primary rounded-full flex items-center justify-center border border-outline-variant shadow-sm mb-4">
+                                <span class="material-symbols-outlined">person_edit</span>
+                            </div>
+                            <h5 class="text-body-md font-bold text-primary">Citizen Submits</h5>
+                            <p class="text-body-sm text-on-surface-variant mt-1">Voice or text suggestions.</p>
+                        </div>
+                        <!-- Step 2 -->
+                        <div class="flex flex-col items-center text-center">
+                            <div
+                                class="w-12 h-12 bg-white text-primary rounded-full flex items-center justify-center border border-outline-variant shadow-sm mb-4">
+                                <span class="material-symbols-outlined">psychology</span>
+                            </div>
+                            <h5 class="text-body-md font-bold text-primary">AI Analyzes</h5>
+                            <p class="text-body-sm text-on-surface-variant mt-1">Data processed for trends.</p>
+                        </div>
+                        <!-- Step 3 -->
+                        <div class="flex flex-col items-center text-center">
+                            <div
+                                class="w-12 h-12 bg-white text-primary rounded-full flex items-center justify-center border border-outline-variant shadow-sm mb-4">
+                                <span class="material-symbols-outlined">trending_up</span>
+                            </div>
+                            <h5 class="text-body-md font-bold text-primary">Priority Ranking</h5>
+                            <p class="text-body-sm text-on-surface-variant mt-1">Ranked by impact score.</p>
+                        </div>
+                        <!-- Step 4 -->
+                        <div class="flex flex-col items-center text-center">
+                            <div
+                                class="w-12 h-12 bg-white text-primary rounded-full flex items-center justify-center border border-outline-variant shadow-sm mb-4">
+                                <span class="material-symbols-outlined">task_alt</span>
+                            </div>
+                            <h5 class="text-body-md font-bold text-primary">MP Takes Action</h5>
+                            <p class="text-body-sm text-on-surface-variant mt-1">Informed planning decisions.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- Footer -->
+        <footer class="bg-surface-container-lowest border-t border-outline-variant py-12">
+            <div
+                class="max-w-container-max-width mx-auto px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-8">
+                <div>
+                    <div class="text-headline-md font-bold text-primary mb-2">People's Priorities</div>
+                    <p class="text-body-sm text-on-surface-variant">Development and Digital
+                        Governance.</p>
+                </div>
+                <nav class="flex flex-wrap justify-center gap-8">
+                    <a class="text-body-sm font-medium text-on-surface-variant hover:text-primary transition-colors"
+                        href="/backend/tempelates/about.html">About</a>
+                    <a class="text-body-sm font-medium text-on-surface-variant hover:text-primary transition-colors"
+                        href="#">Privacy Policy</a>
+                    <a class="text-body-sm font-medium text-on-surface-variant hover:text-primary transition-colors"
+                        href="#">Contact</a>
+                    <a class="text-body-sm font-medium text-on-surface-variant hover:text-primary transition-colors"
+                        href="#">Support</a>
+                </nav>
+                <div class="flex gap-4">
+                    <a class="text-on-surface-variant hover:text-primary" href="#"><span
+                            class="material-symbols-outlined">share</span></a>
+                    <a class="text-on-surface-variant hover:text-primary" href="#"><span
+                            class="material-symbols-outlined">public</span></a>
+                </div>
+            </div>
+        </footer>
+        <script>
+
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('header');
+                if (window.scrollY > 10) {
+                    header.classList.add('shadow-sm');
+                } else {
+                    header.classList.remove('shadow-sm');
+                }
+            });
+
+        </script>
+
+    </body>
+
+    </html>

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>About Us | People's Priorities AI</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <!-- Tailwind Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#f8f9ff",
+                        "secondary-fixed": "#d6e3ff",
+                        "primary-container": "#1b365d",
+                        "on-primary-fixed": "#001b3d",
+                        "surface-container": "#e5eeff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#99a0a7",
+                        "surface-container-low": "#eff4ff",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "tertiary-fixed": "#dde3eb",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#213145",
+                        "on-secondary-fixed-variant": "#00468c",
+                        "inverse-primary": "#aec7f7",
+                        "on-tertiary-fixed-variant": "#41474e",
+                        "error": "#ba1a1a",
+                        "tertiary": "#1b2227",
+                        "surface-tint": "#465f88",
+                        "surface-container-high": "#dce9ff",
+                        "outline": "#74777f",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#c4c6cf",
+                        "secondary-fixed-dim": "#a9c7ff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#001b3d",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-primary-container": "#87a0cd",
+                        "on-background": "#0b1c30",
+                        "surface-variant": "#d3e4fe",
+                        "on-tertiary-fixed": "#161c22",
+                        "on-surface": "#0b1c30",
+                        "tertiary-container": "#30373d",
+                        "surface": "#f8f9ff",
+                        "surface-dim": "#cbdbf5",
+                        "on-secondary-container": "#00376f",
+                        "secondary-container": "#63a1ff",
+                        "primary": "#002046",
+                        "on-surface-variant": "#44474e",
+                        "secondary": "#005db6",
+                        "primary-fixed-dim": "#aec7f7",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#c1c7cf",
+                        "primary-fixed": "#d6e3ff",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#2e476f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "base-unit": "4px",
+                        "container-max-width": "1280px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+
+        .hero-pattern {
+            background-color: #f8f9ff;
+            background-image: radial-gradient(#d3e4fe 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <header class="bg-white border-b border-outline-variant sticky top-0 z-50">
+        <div class="max-w-container-max-width mx-auto px-margin-desktop h-16 flex justify-between items-center">
+
+            <!-- Left Side -->
+            <div class="flex items-center gap-10">
+
+                <!-- Logo -->
+                <div class="text-headline-md font-headline-xl text-primary flex items-center gap-2">
+                    <span class="material-symbols-outlined"
+                        style="font-variation-settings:'FILL' 1;">account_balance</span>
+                    People's Priorities AI
+                </div>
+
+                <!-- Navigation -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a class="text-body-sm font-medium text-on-surface-variant hover:text-primary transition-colors" href="{{url_for('index')}}">
+                        Home
+                    </a>
+
+                    <a class="text-body-sm font-bold text-primary border-b-2 border-primary py-5">
+                        About
+                    </a>
+
+                    <a class="text-body-sm font-medium text-on-surface-variant hover:text-primary transition-colors"
+                        href="#">
+                        Contact
+                    </a>
+                </nav>
+
+            </div>
+
+            <!-- Right Side -->
+            <div class="flex items-center gap-4">
+
+                <div class="h-6 w-px bg-outline-variant"></div>
+
+                <a href="{{url_for('citizen_login')}}">
+                    <button class="text-body-sm font-semibold text-primary hover:underline">
+                        Citizen Login
+                    </button>
+                </a>
+
+                <a href="{{url_for('admin_login')}}">
+                    <button
+                        class="bg-primary text-on-primary px-4 py-2 rounded-lg text-body-sm font-semibold hover:opacity-90 transition-opacity">
+                        MP/Admin Login
+                    </button>
+                </a>
+
+            </div>
+
+        </div>
+    </header>
+
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="hero-pattern py-20 px-margin-desktop">
+            <div class="max-w-container-max-width mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="transition-all duration-700 opacity-100 translate-y-0">
+                    <h1 class="font-headline-xl text-headline-xl text-primary mb-6">About People's Priorities AI</h1>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                        Empowering data-driven constituency development through Artificial Intelligence.
+                    </p>
+                </div>
+                <div
+                    class="relative h-[400px] rounded-xl overflow-hidden shadow-lg border border-outline-variant transition-all duration-700 opacity-100 translate-y-0">
+                    <img class="w-full h-full object-cover"
+                        data-alt="A clean, professional 3D digital illustration representing AI-driven governance."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjh5TYH5jIgyHWI2FTacZIeUaA3H1LxGPun4X1tuAZ31w9MMmAXDL4W1cfhrF4Q-sQzVaVbpCeRTNkVoPuIx8ayYAuvaKd529vEEesflec9rdhucwlbZCWKM6j-p8bel7Bb6qq1t-2ImkGzwhBI_mCVK1xkhPt5hIUHHvhrIsrpBrw66aj3r-UXhB7jyqBCX4VgWmSGVeUv9E2uTZne-tpO-QtLNMi0Osi_54R_MTaNvXF2LS0Rrz6DQ">
+                </div>
+            </div>
+        </section>
+        <!-- Our Mission -->
+        <section class="bg-surface-container-low py-20">
+            <div class="px-margin-desktop max-w-container-max-width mx-auto">
+                <h2 class="font-headline-lg text-headline-lg text-primary text-center mb-12">Our Mission</h2>
+                <div
+                    class="grid grid-cols-1 md:grid-cols-3 gap-gutter items-stretch transition-all duration-700 opacity-100 translate-y-0">
+                    <!-- Mission Card 1 -->
+                    <div
+                        class="bg-white p-6 rounded-xl border border-outline-variant text-center flex flex-col justify-center">
+                        <div class="mb-4 text-secondary">
+                            <span class="material-symbols-outlined text-4xl">campaign</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-primary mb-2">Empower citizens</h3>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">Enable every community member to
+                            share their development needs directly.</p>
+                    </div>
+                    <!-- Mission Card 2 -->
+                    <div
+                        class="bg-white p-6 rounded-xl border border-outline-variant text-center flex flex-col justify-center">
+                        <div class="mb-4 text-secondary">
+                            <span class="material-symbols-outlined text-4xl">assignment_turned_in</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-primary mb-2">Help MPs prioritize</h3>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">Use advanced AI to rank urgent
+                            local projects with precision and data.</p>
+                    </div>
+                    <!-- Mission Card 3 -->
+                    <div
+                        class="bg-white p-6 rounded-xl border border-outline-variant text-center flex flex-col justify-center">
+                        <div class="mb-4 text-secondary">
+                            <span class="material-symbols-outlined text-4xl">policy</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-primary mb-2">Promote transparency</h3>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">Build evidence-based governance
+                            where funding follows requirements.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- The Problem We Solve -->
+        <section class="py-20 px-margin-desktop max-w-container-max-width mx-auto">
+            <h2 class="font-headline-lg text-headline-lg text-primary mb-12">The Problem We Solve</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div
+                    class="p-6 border-l-4 border-primary-container bg-surface-container-lowest rounded-r-lg shadow-sm transition-all duration-700 opacity-100 translate-y-0">
+                    <span class="material-symbols-outlined text-primary-container mb-3">forum</span>
+                    <h4 class="font-label-md text-label-md text-primary uppercase tracking-wider">Scattered feedback
+                    </h4>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Community voices are often lost in
+                        unstructured social media threads or paper files.</p>
+                </div>
+                <div
+                    class="p-6 border-l-4 border-primary-container bg-surface-container-lowest rounded-r-lg shadow-sm transition-all duration-700 opacity-100 translate-y-0">
+                    <span class="material-symbols-outlined text-primary-container mb-3">psychology</span>
+                    <h4 class="font-label-md text-label-md text-primary uppercase tracking-wider">Manual decisions</h4>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Resource allocation relies on
+                        subjective memory rather than verifiable data aggregates.</p>
+                </div>
+                <div
+                    class="p-6 border-l-4 border-primary-container bg-surface-container-lowest rounded-r-lg shadow-sm transition-all duration-700 opacity-100 translate-y-0">
+                    <span class="material-symbols-outlined text-primary-container mb-3">low_priority</span>
+                    <h4 class="font-label-md text-label-md text-primary uppercase tracking-wider">Lack of priority</h4>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Difficult to differentiate between
+                        loudest voices and the most widespread community needs.</p>
+                </div>
+                <div
+                    class="p-6 border-l-4 border-primary-container bg-surface-container-lowest rounded-r-lg shadow-sm transition-all duration-700 opacity-100 translate-y-0">
+                    <span class="material-symbols-outlined text-primary-container mb-3">visibility_off</span>
+                    <h4 class="font-label-md text-label-md text-primary uppercase tracking-wider">Poor visibility</h4>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Leadership lacks a real-time
+                        overview of infrastructure gaps across different districts.</p>
+                </div>
+            </div>
+        </section>
+        <!-- Our Vision -->
+        <section class="py-20 bg-surface-container-low/30">
+            <div class="max-w-container-max-width mx-auto px-margin-desktop text-center mb-16">
+                <h2 class="text-headline-lg text-primary font-bold">Our Vision</h2>
+            </div>
+            <div class="max-w-container-max-width mx-auto px-margin-desktop">
+                <div
+                    class="grid grid-cols-1 md:grid-cols-4 gap-8 relative transition-all duration-700 opacity-100 translate-y-0">
+                    <!-- Connectors for Desktop -->
+                    <div
+                        class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-outline-variant -z-10 -translate-y-1/2">
+                    </div>
+                    <!-- Step 1 -->
+                    <div
+                        class="bg-white p-6 rounded-lg border border-outline-variant shadow-sm flex flex-col items-center text-center">
+                        <div
+                            class="w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center font-bold mb-4">
+                            <span class="material-symbols-outlined">person_pin</span>
+                        </div>
+                        <h5 class="text-body-md font-bold text-primary">Citizen Participation</h5>
+                        <p class="text-body-sm text-on-surface-variant mt-2">A society where every voice is heard.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div
+                        class="bg-white p-6 rounded-lg border border-outline-variant shadow-sm flex flex-col items-center text-center">
+                        <div
+                            class="w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center font-bold mb-4">
+                            <span class="material-symbols-outlined">auto_awesome</span>
+                        </div>
+                        <h5 class="text-body-md font-bold text-primary">AI Intelligence</h5>
+                        <p class="text-body-sm text-on-surface-variant mt-2">Augmented human decision making.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div
+                        class="bg-white p-6 rounded-lg border border-outline-variant shadow-sm flex flex-col items-center text-center">
+                        <div
+                            class="w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center font-bold mb-4">
+                            <span class="material-symbols-outlined">verified_user</span>
+                        </div>
+                        <h5 class="text-body-md font-bold text-primary">Transparent Governance</h5>
+                        <p class="text-body-sm text-on-surface-variant mt-2">Clear path from input to action.</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div
+                        class="bg-white p-6 rounded-lg border border-outline-variant shadow-sm flex flex-col items-center text-center">
+                        <div
+                            class="w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center font-bold mb-4">
+                            <span class="material-symbols-outlined">home_work</span>
+                        </div>
+                        <h5 class="text-body-md font-bold text-primary">Better Communities</h5>
+                        <p class="text-body-sm text-on-surface-variant mt-2">Visible growth and development.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Core Values -->
+        <section class="py-20 px-margin-desktop max-w-container-max-width mx-auto">
+            <h2 class="font-headline-lg text-headline-lg text-primary text-center mb-12">Core Values</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+                <div
+                    class="flex gap-6 items-start p-8 rounded-xl bg-white border border-outline-variant shadow-sm transition-all duration-700 opacity-100 translate-y-0">
+                    <div class="bg-surface-container-high p-3 rounded-lg text-primary shrink-0">
+                        <span class="material-symbols-outlined text-2xl">visibility</span>
+                    </div>
+                    <div>
+                        <h4 class="font-headline-md text-headline-md text-primary mb-2">Transparency</h4>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">We believe in making the
+                            decision-making process visible and accountable to every citizen.</p>
+                    </div>
+                </div>
+                <div
+                    class="flex gap-6 items-start p-8 rounded-xl bg-white border border-outline-variant shadow-sm transition-all duration-700 opacity-100 translate-y-0">
+                    <div class="bg-surface-container-high p-3 rounded-lg text-primary shrink-0">
+                        <span class="material-symbols-outlined text-2xl">groups</span>
+                    </div>
+                    <div>
+                        <h4 class="font-headline-md text-headline-md text-primary mb-2">Inclusivity</h4>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">Ensuring that voices from the most
+                            remote regions are processed with equal weight.</p>
+                    </div>
+                </div>
+                <div
+                    class="flex gap-6 items-start p-8 rounded-xl bg-white border border-outline-variant shadow-sm transition-all duration-700 opacity-100 translate-y-0">
+                    <div class="bg-surface-container-high p-3 rounded-lg text-primary shrink-0">
+                        <span class="material-symbols-outlined text-2xl">bolt</span>
+                    </div>
+                    <div>
+                        <h4 class="font-headline-md text-headline-md text-primary mb-2">AI-powered Decisions</h4>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">Leveraging neutral technology to
+                            eliminate bias and focus on objective development metrics.</p>
+                    </div>
+                </div>
+                <div
+                    class="flex gap-6 items-start p-8 rounded-xl bg-white border border-outline-variant shadow-sm transition-all duration-700 opacity-100 translate-y-0">
+                    <div class="bg-surface-container-high p-3 rounded-lg text-primary shrink-0">
+                        <span class="material-symbols-outlined text-2xl">public</span>
+                    </div>
+                    <div>
+                        <h4 class="font-headline-md text-headline-md text-primary mb-2">Community Impact</h4>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">Our success is measured by tangible
+                            improvements in local services and infrastructure.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Why AI? -->
+        <section class="bg-surface-container py-20">
+            <div class="px-margin-desktop max-w-container-max-width mx-auto">
+                <div
+                    class="bg-white rounded-2xl p-10 shadow-sm border border-outline-variant transition-all duration-700 opacity-100 translate-y-0">
+                    <div class="flex flex-col lg:row-reverse lg:flex-row-reverse gap-12 items-center">
+                        <div class="lg:w-1/2">
+                            <h2 class="font-headline-lg text-headline-lg text-primary mb-6">Why AI?</h2>
+                            <p class="font-body-md text-body-md text-on-surface-variant mb-6">
+                                Managing millions of inputs requires precision. Our AI enhances human judgment by
+                                processing vast information instantly.
+                            </p>
+                            <ul class="space-y-4">
+                                <li class="flex items-center gap-3">
+                                    <span
+                                        class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+                                    <span class="font-body-sm text-on-surface">Understand feedback instantly at
+                                        scale</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span
+                                        class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+                                    <span class="font-body-sm text-on-surface">Detect recurring issues across
+                                        districts</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span
+                                        class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+                                    <span class="font-body-sm text-on-surface">Recommend projects based on community
+                                        data</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div
+                            class="lg:w-1/2 w-full aspect-video rounded-xl overflow-hidden bg-primary-container flex items-center justify-center relative">
+                            <!-- AI Visualization Placeholder -->
+                            <div class="absolute inset-0 opacity-10"
+                                style="background-image: radial-gradient(circle at 2px 2px, #fff 1px, transparent 0); background-size: 20px 20px;">
+                            </div>
+                            <div class="z-10 text-center">
+                                <span
+                                    class="material-symbols-outlined text-[64px] text-white opacity-40">query_stats</span>
+                                <p class="text-white font-medium mt-4">Smart Public Planning</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-surface-container-lowest border-t border-outline-variant py-12">
+        <div
+            class="max-w-container-max-width mx-auto px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-8">
+            <div>
+                <div class="text-headline-md font-headline-xl text-primary flex items-center gap-2">
+                    <span class="material-symbols-outlined"
+                        style="font-variation-settings: &quot;FILL&quot; 1;">account_balance</span>
+                    People's Priorities AI
+                </div>
+                <p class="text-body-sm text-on-surface-variant">© 2024 Ministry of Development and Digital Governance.
+                </p>
+            </div>
+            <nav class="flex flex-wrap justify-center gap-8">
+                <a class="text-body-sm font-bold text-primary" href="/backend/tempelates/about.html">About</a>
+                <a class="text-body-sm font-medium text-on-surface-variant hover:text-primary transition-colors"
+                    href="#">Privacy Policy</a>
+                <a class="text-body-sm font-medium text-on-surface-variant hover:text-primary transition-colors"
+                    href="#">Contact</a>
+                <a class="text-body-sm font-medium text-on-surface-variant hover:text-primary transition-colors"
+                    href="#">Support</a>
+            </nav>
+            <div class="flex gap-4">
+                <a class="text-on-surface-variant hover:text-primary" href="#"><span
+                        class="material-symbols-outlined">share</span></a>
+                <a class="text-on-surface-variant hover:text-primary" href="#"><span
+                        class="material-symbols-outlined">public</span></a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Header shadow on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 10) {
+                header.classList.add('shadow-sm');
+            } else {
+                header.classList.remove('shadow-sm');
+            }
+        });
+
+        // Simple reveal animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-8');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section > div > div').forEach(el => {
+            el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-8');
+            observer.observe(el);
+        });
+
+
+        function toggleLanguageMenu() {
+            document.getElementById("lang-menu").classList.toggle("hidden");
+        }
+
+        function changeLanguage(language) {
+            document.getElementById("selected-language").innerText = language;
+            document.getElementById("lang-menu").classList.add("hidden");
+
+            // Later, we will integrate actual translation here.
+            console.log("Selected Language:", language);
+        }
+
+        // Close dropdown if clicked outside
+        window.addEventListener("click", function (event) {
+            const menu = document.getElementById("lang-menu");
+            const button = document.querySelector("#selected-language").parentElement;
+
+            if (!button.contains(event.target) && !menu.contains(event.target)) {
+                menu.classList.add("hidden");
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

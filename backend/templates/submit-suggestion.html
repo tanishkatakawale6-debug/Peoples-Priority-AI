@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Submit New Suggestion | People's Priorities AI</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#41474e",
+                        "outline": "#74777f",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-surface-variant": "#44474e",
+                        "tertiary-container": "#30373d",
+                        "tertiary": "#1b2227",
+                        "primary-fixed-dim": "#aec7f7",
+                        "surface-tint": "#465f88",
+                        "primary": "#002046",
+                        "surface-dim": "#cbdbf5",
+                        "on-tertiary-fixed": "#161c22",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c4c6cf",
+                        "surface-container-low": "#eff4ff",
+                        "surface-variant": "#d3e4fe",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#d6e3ff",
+                        "inverse-primary": "#aec7f7",
+                        "error-container": "#ffdad6",
+                        "background": "#f8f9ff",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#2e476f",
+                        "on-error-container": "#93000a",
+                        "surface": "#f8f9ff",
+                        "on-secondary-container": "#00376f",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#63a1ff",
+                        "surface-container": "#e5eeff",
+                        "on-surface": "#0b1c30",
+                        "inverse-surface": "#213145",
+                        "on-secondary-fixed": "#001b3d",
+                        "secondary-fixed": "#d6e3ff",
+                        "surface-container-high": "#dce9ff",
+                        "secondary": "#005db6",
+                        "primary-container": "#1b365d",
+                        "surface-bright": "#f8f9ff",
+                        "tertiary-fixed": "#dde3eb",
+                        "on-primary-container": "#87a0cd",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#a9c7ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-tertiary-container": "#99a0a7",
+                        "on-primary-fixed": "#001b3d",
+                        "on-background": "#0b1c30",
+                        "tertiary-fixed-dim": "#c1c7cf",
+                        "on-secondary-fixed-variant": "#00468c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "margin-mobile": "16px",
+                        "stack-lg": "32px",
+                        "gutter": "24px",
+                        "base-unit": "4px",
+                        "margin-desktop": "32px",
+                        "container-max-width": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-xl-mobile": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "500" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .ai-glow {
+            box-shadow: 0 0 15px rgba(0, 94, 184, 0.1);
+        }
+
+        .step-line::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 40px;
+            bottom: -20px;
+            width: 2px;
+            background-color: #E2E8F0;
+        }
+
+        .step-line-last::before {
+            display: none;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+
+<body class="bg-surface text-on-surface flex flex-col min-h-screen">
+    <!-- TopNavBar -->
+    <header
+        class="bg-surface dark:bg-surface-container-low border-b border-outline-variant dark:border-outline docked full-width top-0 z-50">
+        <div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max-width mx-auto h-16">
+            <div
+                class="text-headline-md font-headline-xl text-primary dark:text-primary-fixed-dim flex items-center gap-2">
+                People's Priorities AI
+            </div>
+            <div class="hidden md:flex items-center gap-8"><a
+                    class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1 transition-all"
+                    href="#">Citizen Portal</a><a
+                    class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors"
+                    href="#">MP/Admin Portal</a>
+            </div>
+
+
+            <div class="relative">
+                <button onclick="toggleProfileMenu()" class="flex items-center gap-2">
+                    <!-- Profile Icon -->
+                    <span class="material-symbols-outlined">account_circle</span>
+                    <span>{{ citizen_name }}</span>
+                    <span class="material-symbols-outlined">arrow_drop_down</span>
+                </button>
+
+                <div id="profileMenu"
+                    class="hidden absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border z-50">
+                    <div class="px-4 py-3 border-b">
+                        <p class="font-semibold">{{ citizen_name }}</p>
+                        <p class="text-sm text-gray-500">{{ citizen_email}}</p>
+                    </div>
+
+                    <a href="{{url_for('citizen_login')}}">
+                    <button class="w-full text-left px-4 py-2 hover:bg-gray-100 text-red-600">
+                        Logout
+                    </button>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+
+    </header>
+    <main class="flex-grow w-full max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg">
+        <!-- Page Header -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-stack-lg gap-4">
+            <div>
+                <h1 class="font-headline-xl text-headline-xl text-on-surface mb-1">Submit a New Suggestion</h1>
+                <p class="font-body-md text-body-md text-on-surface-variant">Your voice helps prioritize community
+                    projects. Complete the form below to contribute.</p>
+            </div>
+            <a href="{{url_for('citizen_login')}}">
+                <button
+                    class="flex items-center gap-2 px-stack-md py-2 text-secondary border border-outline-variant rounded-lg hover:bg-secondary-container transition-colors group">
+                    <span
+                        class="material-symbols-outlined text-[20px] group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                    <span class="font-label-md text-label-md">Back to Dashboard</span>
+                </button>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+
+            <!-- Form Section (8 Columns) -->
+            <form action="{{ url_for('submit_suggestion') }}" method="POST" enctype="multipart/form-data"
+                class="lg:col-span-8 space-y-stack-lg">
+
+                <!-- Section 1: Category -->
+                <div class="relative pl-12 step-line">
+                    <div
+                        class="absolute left-0 top-0 w-10 h-10 rounded-full bg-primary-container text-on-primary-fixed-dim flex items-center justify-center font-bold text-white">
+                        1
+                    </div>
+                    <div class="bg-surface-container-lowest border border-outline-variant p-stack-lg rounded-xl">
+                        <label class="block font-label-md text-label-md text-on-surface-variant mb-2">CATEGORY
+                        </label>
+                        <select
+                            class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-3 text-body-md focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all"
+                            name="category" id="category">
+                            <option disabled="" selected="" value="">Select a category for your suggestion</option>
+                            <option value="roads">Roads &amp; Infrastructure</option>
+                            <option value="water">Water Supply &amp; Sanitation</option>
+                            <option value="healthcare">Healthcare Services</option>
+                            <option value="education">Education &amp; Schools</option>
+                            <option value="environment">Environment &amp; Parks</option>
+                            <option value="safety">Public Safety</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Section 2: Title -->
+                <div class="relative pl-12 step-line">
+                    <div
+                        class="absolute left-0 top-0 w-10 h-10 rounded-full bg-primary-container text-on-primary-fixed-dim flex items-center justify-center font-bold text-white">
+                        2</div>
+                    <div class="bg-surface-container-lowest border border-outline-variant p-stack-lg rounded-xl">
+                        <label class="block font-label-md text-label-md text-on-surface-variant mb-2">SUGGESTION
+                            TITLE</label>
+                        <input
+                            class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-3 text-body-md focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all"
+                            placeholder="e.g., Improve lighting on Park Avenue" type="text" name="title" id="title">
+                        <p class="text-label-sm text-outline mt-2 italic">Provide a concise summary of the issue or
+                            idea.</p>
+                    </div>
+                </div>
+                <!-- Section 3 & 4: Description & Voice -->
+                <div class="relative pl-12 step-line">
+                    <div
+                        class="absolute left-0 top-0 w-10 h-10 rounded-full bg-primary-container text-on-primary-fixed-dim flex items-center justify-center font-bold text-white">
+                        3</div>
+                    <div class="bg-surface-container-lowest border border-outline-variant p-stack-lg rounded-xl">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <label class="block font-label-md text-label-md text-on-surface-variant mb-1">DETAILED
+                                    DESCRIPTION</label>
+                                <div class="flex items-center gap-1.5 text-secondary">
+                                    <span class="material-symbols-outlined text-[16px]">auto_awesome</span>
+                                    <span class="text-label-sm">AI Drafting Assistance is active</span>
+                                </div>
+                            </div>
+                            <button
+                                class="flex items-center gap-2 px-3 py-1.5 bg-secondary-container text-on-secondary-container rounded-full text-label-md hover:brightness-95 transition-all">
+                                <span class="material-symbols-outlined text-[18px]">translate</span>
+                                Translate
+                            </button>
+                        </div>
+                        <textarea
+                            class="w-full bg-primary-fixed-dim/10 border border-outline-variant rounded-lg p-4 text-body-md focus:ring-2 focus:ring-secondary focus:border-secondary outline-none ai-glow transition-all"
+                            placeholder="Describe the problem, the proposed solution, and the potential benefit to the community..."
+                            rows="5" name="description"></textarea>
+                    </div>
+                </div>
+                <!-- Voice Input Section -->
+                <div
+                    class="mt-stack-md p-stack-md bg-surface-container-high rounded-lg border border-dashed border-outline-variant">
+
+                    <label for="voice" class="flex items-center gap-4 cursor-pointer">
+
+                        <span class="material-symbols-outlined text-primary text-[40px]">
+                            mic
+                        </span>
+
+                        <div>
+
+                            <h4 class="font-label-md text-label-md text-on-surface">
+                                Upload Voice Recording
+                            </h4>
+
+                            <p class="text-body-sm text-on-surface-variant" id="voiceFileName">
+                                Click to upload an audio file.
+                            </p>
+
+                        </div>
+
+                    </label>
+
+                    <input type="file" id="voice" name="voice" accept="audio/*" class="hidden">
+
+
+                </div>
+                <!-- Section 5: Photos -->
+                <div
+                    class="border-2 border-dashed border-outline-variant bg-surface-container-low rounded-xl p-stack-lg text-center hover:bg-surface-variant transition-colors">
+
+                    <input type="file" id="image" name="image" accept="image/*" multiple class="hidden">
+
+                    <label for="image" class="cursor-pointer flex flex-col items-center">
+
+                        <span class="material-symbols-outlined text-[48px] text-outline mb-2">
+                            add_a_photo
+                        </span>
+
+                        <p class="font-headline-md text-headline-md text-on-surface">
+                            Click to upload photos
+                        </p>
+
+                        <p class="text-body-sm text-on-surface-variant">
+                            Max 5 images (10MB each)
+                        </p>
+
+                    </label>
+
+                    <input type="file" id="image" name="image" accept="image/*" multiple class="hidden">
+
+                </div>
+                <!-- Preview Thumbnails -->
+
+                <div id="imagePreview" class="grid grid-cols-4 md:grid-cols-6 gap-4 mt-4"></div>
+
+
+                <!-- Section 6: Location -->
+                <div class="relative pl-12 step-line">
+                    <div
+                        class="absolute left-0 top-0 w-10 h-10 rounded-full bg-primary-container text-on-primary-fixed-dim flex items-center justify-center font-bold text-white">
+                        5</div>
+                    <div class="bg-surface-container-lowest border border-outline-variant p-stack-lg rounded-xl">
+                        <label class="block font-label-md text-label-md text-on-surface-variant mb-4">LOCATION</label>
+                        <div class="flex flex-col md:flex-row gap-gutter">
+                            <div class="flex-1">
+                                <div
+                                    class="relative w-full h-64 rounded-xl overflow-hidden border border-outline-variant mb-4">
+                                    <div id="map" class="w-full h-64 rounded-xl border border-outline-variant">
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="flex-1 space-y-stack-md">
+                                <div>
+                                    <label class="text-label-sm text-on-surface-variant mb-1 block">MANUAL
+                                        ADDRESS</label>
+                                    <input
+                                        class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-3 text-body-md focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all"
+                                        type="text" name="location" id="location"
+                                        value="Ward No. 142, near Sinhgad Road">
+                                </div>
+                                <div>
+                                    <label class="text-label-sm text-on-surface-variant mb-1 block">PINCODE</label>
+                                    <input
+                                        class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-3 text-body-md focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all"
+                                        placeholder="110001" name="pincode" type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              
+
+                <div
+                    class="fixed bottom-0 left-0 right-0 bg-surface border-t border-outline-variant px-margin-mobile py-stack-md z-40 md:static md:bg-transparent md:border-none md:px-0 md:mt-stack-lg">
+                    <div class="max-w-container-max-width mx-auto flex flex-col sm:flex-row justify-end gap-stack-md">
+                        <button type="button"
+                            class="px-8 py-3 bg-surface-container-high text-on-surface font-semibold rounded-lg hover:bg-surface-variant transition-all">
+                            Save as Draft
+                        </button>
+                        <button type="submit"
+                            class="px-8 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-secondary shadow-lg shadow-primary/20 transform active:scale-95 transition-all">
+                            Submit Suggestion
+                        </button>
+                    </div>
+                </div>
+                <input type="hidden" name="latitude" id="latitude">
+                <input type="hidden" name="longitude" id="longitude">
+            </form>
+
+            <!-- Summary / Sidebar Section (4 Columns) -->
+            <div class="lg:col-span-4 h-fit sticky top-20">
+                <div class="bg-primary text-on-primary p-stack-lg rounded-xl shadow-lg">
+                    <div class="flex items-center gap-2 mb-4 border-b border-white/20 pb-4">
+                        <span class="material-symbols-outlined text-secondary-container">fact_check</span>
+                        <h3 class="font-headline-md text-headline-md">Review Summary</h3>
+                    </div>
+                    <div class="space-y-stack-md text-on-primary/80">
+                        <div>
+                            <span class="text-label-sm font-bold uppercase block text-secondary-fixed">Category</span>
+                            <p class="text-body-sm font-medium text-white" id="summaryCategory">Not Selected</p>
+                        </div>
+                        <div>
+                            <span class="text-label-sm font-bold uppercase block text-secondary-fixed">Title</span>
+                            <p class="text-body-sm font-medium text-white" id="summaryTitle">No Title</p>
+                        </div>
+                        <div>
+                            <span class="text-label-sm font-bold uppercase block text-secondary-fixed">Location</span>
+                            <p class="text-body-sm font-medium text-white" id="summaryLocation">No Location
+                            </p>
+                        </div>
+                        <div class="bg-white/10 p-3 rounded-lg mt-stack-lg">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="material-symbols-outlined text-[16px] text-secondary-fixed">verified</span>
+                                <span class="text-label-sm font-bold text-white">AI&nbsp; Preview</span>
+                            </div>
+
+                            <p class="text-[10px] mt-1 italic">Ready for AI Analysis&nbsp;</p>
+                        </div>
+                    </div>
+                    <div class="mt-stack-lg pt-stack-lg border-t border-white/20">
+                        <p class="text-body-sm mb-4">By submitting, you agree to public disclosure of this suggestion
+                            for community voting.</p>
+                        <div class="flex items-center gap-2">
+                            <input class="rounded border-white/40 bg-transparent text-secondary focus:ring-secondary"
+                                id="terms" type="checkbox">
+                            <label class="text-label-sm" for="terms">I accept the Terms and Conditions</label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+    <!-- Footer -->
+    <footer class="bg-surface-container-lowest border-t border-outline-variant py-12">
+        <div
+            class="max-w-container-max-width mx-auto px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-8">
+            <div>
+                <div class="text-headline-md font-bold text-primary mb-2">People's Priorities</div>
+                <p class="text-body-sm text-on-surface-variant">Development and Digital Governance.
+                </p>
+            </div>
+            <nav class="flex flex-wrap justify-center gap-8">
+                <a class="text-body-sm font-medium text-on-surface-variant hover:text-primary transition-colors" href="{{url_for('about')}}">About&nbsp;</a>
+                <a class="text-body-sm font-medium text-on-surface-variant hover:text-primary transition-colors"
+                    href="#">Privacy Policy</a>
+                <a class="text-body-sm font-medium text-on-surface-variant hover:text-primary transition-colors"
+                    href="#">Contact</a>
+                <a class="text-body-sm font-medium text-on-surface-variant hover:text-primary transition-colors"
+                    href="#">Support</a>
+            </nav>
+            <div class="flex gap-4">
+                <a class="text-on-surface-variant hover:text-primary" href="#"><span
+                        class="material-symbols-outlined">share</span></a>
+                <a class="text-on-surface-variant hover:text-primary" href="#"><span
+                        class="material-symbols-outlined">public</span></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", function () {
+
+            const voiceInput = document.getElementById("voice");
+            const voiceText = document.getElementById("voiceFileName");
+
+            if (voiceInput) {
+
+                voiceInput.addEventListener("change", function () {
+
+                    if (this.files.length > 0) {
+
+                        voiceText.innerHTML =
+                            "🎤 " + this.files[0].name + " uploaded successfully";
+
+                    }
+
+                });
+
+            }
+
+        });
+
+        function toggleProfileMenu() {
+            document.getElementById("profileMenu").classList.toggle("hidden");
+        }
+
+        window.addEventListener("click", function (e) {
+            const menu = document.getElementById("profileMenu");
+            const button = menu.previousElementSibling;
+
+            if (!menu.contains(e.target) && !button.contains(e.target)) {
+                menu.classList.add("hidden");
+            }
+        });
+
+
+
+
+        window.addEventListener("DOMContentLoaded", function () {
+
+            console.log("DOM Loaded");
+
+            const imageInput = document.getElementById("image");
+            const preview = document.getElementById("imagePreview");
+
+            console.log(imageInput);
+            console.log(preview);
+
+            imageInput.addEventListener("change", function () {
+
+                preview.innerHTML = "";
+
+                Array.from(this.files).forEach(file => {
+
+                    const reader = new FileReader();
+
+                    reader.onload = function (e) {
+
+                        const container = document.createElement("div");
+                        container.className = "relative w-24 h-24";
+
+                        const img = document.createElement("img");
+                        img.src = e.target.result;
+                        img.className = "w-full h-full object-cover rounded-lg border";
+
+                        const removeBtn = document.createElement("button");
+                        removeBtn.type = "button";
+                        removeBtn.innerHTML = "✕";
+                        removeBtn.className =
+                            "absolute top-1 right-1 w-6 h-6 rounded-full bg-red-600 text-white text-xs hover:bg-red-700";
+
+                        removeBtn.onclick = function () {
+                            container.remove();
+                        };
+
+                        container.appendChild(img);
+                        container.appendChild(removeBtn);
+
+                        preview.appendChild(container);
+
+                    };
+
+                    reader.readAsDataURL(file);
+
+                });
+
+            });
+
+        });
+
+        const categoryField = document.getElementById("category");
+        const titleField = document.getElementById("title");
+        const locationField = document.getElementById("location");
+
+        categoryField.addEventListener("change", function () {
+            document.getElementById("summaryCategory").textContent =
+                categoryField.options[categoryField.selectedIndex].text;
+        });
+
+        titleField.addEventListener("input", function () {
+            document.getElementById("summaryTitle").textContent =
+                titleField.value || "No Title";
+        });
+
+        locationField.addEventListener("input", function () {
+            document.getElementById("summaryLocation").textContent =
+                locationField.value || "No Location";
+        });
+
+        const map = L.map('map').setView([18.5204, 73.8567], 13);
+
+        L.tileLayer(
+            'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            {
+                maxZoom: 19
+            }
+        ).addTo(map);
+
+        let marker;
+
+        map.on('click', function (e) {
+
+            const lat = e.latlng.lat;
+            const lng = e.latlng.lng;
+
+            if (marker) {
+                map.removeLayer(marker);
+            }
+
+            marker = L.marker([lat, lng]).addTo(map);
+
+            document.getElementById("latitude").value = lat;
+            document.getElementById("longitude").value = lng;
+
+        });
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>

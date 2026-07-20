@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Citizen Registration - People's Priorities AI</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Administrative Precision Custom Shadow */
+        .admin-shadow {
+            box-shadow: 0 4px 12px rgba(19, 27, 46, 0.15);
+        }
+
+        /* Custom scrollbar for searchable dropdowns */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "error": "#ba1a1a",
+                        "primary-container": "#131b2e",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#497cff",
+                        "secondary": "#515f74",
+                        "on-primary-container": "#7c839b",
+                        "outline": "#76777d",
+                        "on-tertiary-fixed": "#00174b",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#565e74",
+                        "inverse-primary": "#bec6e0",
+                        "surface-dim": "#d8dadc",
+                        "outline-variant": "#c6c6cd",
+                        "primary-fixed-dim": "#bec6e0",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-container-low": "#f2f4f6",
+                        "on-primary-fixed": "#131b2e",
+                        "surface-container": "#eceef0",
+                        "background": "#f7f9fb",
+                        "secondary-container": "#d5e3fd",
+                        "secondary-fixed": "#d5e3fd",
+                        "tertiary-fixed": "#dbe1ff",
+                        "surface-container-highest": "#e0e3e5",
+                        "tertiary-fixed-dim": "#b4c5ff",
+                        "on-surface-variant": "#45464d",
+                        "on-surface": "#191c1e",
+                        "on-primary": "#ffffff",
+                        "surface": "#f7f9fb",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#dae2fd",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "inverse-surface": "#2d3133",
+                        "on-secondary-container": "#57657b",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f7f9fb",
+                        "primary": "#000000",
+                        "on-background": "#191c1e",
+                        "tertiary": "#000000",
+                        "inverse-on-surface": "#eff1f3",
+                        "tertiary-container": "#00174b",
+                        "on-tertiary-fixed-variant": "#003ea8",
+                        "surface-variant": "#e0e3e5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "80px",
+                        "xs": "4px",
+                        "base": "8px",
+                        "container-max": "1200px",
+                        "sm": "12px",
+                        "gutter": "24px",
+                        "md": "24px",
+                        "lg": "48px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col">
+    <!-- TopNavBar -->
+    <header class="bg-white border-b border-outline-variant sticky top-0 z-50">
+            <div class="max-w-container-max-width mx-auto px-margin-desktop h-16 flex justify-between items-center">
+                <div class="flex items-center gap-8">
+                    <div class="text-headline-md font-headline-xl text-primary flex items-center gap-2">
+                <span class="material-symbols-outlined"
+                    style="font-variation-settings: &quot;FILL&quot; 1;">account_balance</span>
+                People's Priorities AI
+            </div>
+                    <nav class="hidden lg:flex items-center gap-6">
+                        <a class="text-body-sm font-medium text-on-surface-variant hover:text-primary transition-colors" href="{{url_for('index')}}">Home</a>
+                        <a class="text-body-sm font-medium text-on-surface-variant hover:text-primary transition-colors"
+                            href="{{url_for('about')}}">About</a>
+
+
+                        <a class="text-body-sm font-medium text-on-surface-variant hover:text-primary transition-colors"
+                            href="#">Contact</a>
+                    </nav>
+                </div>
+
+
+            </div>
+        </header>
+
+    <main class="flex-grow flex items-center justify-center py-xl px-gutter relative">
+        <!-- Atmospheric Background Element -->
+        <div class="absolute inset-0 pointer-events-none opacity-40 overflow-hidden">
+            <div
+                class="absolute -top-1/4 -right-1/4 w-[600px] h-[600px] bg-secondary-container rounded-full blur-[120px]">
+            </div>
+            <div
+                class="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-tertiary-fixed-dim rounded-full blur-[120px]">
+            </div>
+        </div>
+        <!-- Registration Container -->
+        <div class="w-full max-w-3xl relative z-10">
+            <!-- Progress Indicator -->
+            <div class="flex items-center justify-center mb-lg">
+                <div class="flex items-center gap-4">
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="w-10 h-10 rounded-full bg-primary-container text-white flex items-center justify-center font-bold">
+                            1</div>
+                        <span class="text-label-sm font-label-sm mt-2 text-primary-container">Account</span>
+                    </div>
+                    <div class="w-12 h-[2px] bg-outline-variant mb-6"></div>
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-bold">
+                            2</div>
+                        <span class="text-label-sm font-label-sm mt-2 text-on-surface-variant">Verify</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Registration Card -->
+            <div class="bg-white rounded-xl admin-shadow p-8 md:p-12">
+                <div class="text-center mb-10">
+                    <h1 class="font-headline-lg text-headline-lg md:text-headline-lg text-on-surface mb-2">Create
+                        Citizen Account</h1>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Register once to submit development
+                        suggestions and track their progress.</p>
+                </div>
+                <form class="space-y-lg" id="registrationForm" action="{{url_for('citizen_register')}}" method="POST">
+                    <!-- Section: Personal Information -->
+                    <section>
+                        <h2
+                            class="font-headline-sm text-headline-sm text-primary-container border-b border-outline-variant pb-2 mb-md flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[20px]">person</span>
+                            Personal Information
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+                            <div class="md:col-span-2">
+                                <label class="block font-label-md text-label-md text-on-surface mb-2"
+                                    for="name">Full Name</label>
+                                <input
+                                    class="w-full h-12 px-4 rounded-lg border border-outline-variant focus:border-tertiary-container focus:ring-2 focus:ring-tertiary-container/10 transition-all outline-none text-body-md"
+                                    id="name" name="name" placeholder="Enter your full legal name"
+                                    type="text" required />
+                            </div>
+                            <div>
+                                <label class="block font-label-md text-label-md text-on-surface mb-2" for="email">Email
+                                    Address</label>
+                                <input
+                                    class="w-full h-12 px-4 rounded-lg border border-outline-variant focus:border-tertiary-container focus:ring-2 focus:ring-tertiary-container/10 transition-all outline-none text-body-md"
+                                    id="email" name="email" placeholder="email@example.com" type="email" required/>
+                            </div>
+                            <div>
+                                <label class="block font-label-md text-label-md text-on-surface mb-2"
+                                    for="mobile_number">Mobile Number</label>
+                                <div class="relative">
+                                    <span
+                                        class="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant font-label-md">+91</span>
+                                    <input
+                                        class="w-full h-12 pl-12 pr-4 rounded-lg border border-outline-variant focus:border-tertiary-container focus:ring-2 focus:ring-tertiary-container/10 transition-all outline-none text-body-md"
+                                        id="mobile_number" name="mobile_number" placeholder="xxxxxxxxxx" type="tel" required />
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Section: Account Details -->
+                    <section>
+                        <h2
+                            class="font-headline-sm text-headline-sm text-primary-container border-b border-outline-variant pb-2 mb-md flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[20px]">lock</span>
+                            Account Details
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+                            <div>
+                                <label class="block font-label-md text-label-md text-on-surface mb-2"
+                                    for="password">Password</label>
+                                <input
+                                    class="w-full h-12 px-4 rounded-lg border border-outline-variant focus:border-tertiary-container focus:ring-2 focus:ring-tertiary-container/10 transition-all outline-none text-body-md"
+                                    id="password" name="password" placeholder="••••••••" type="password" required/>
+                            </div>
+                            <div>
+                                <label class="block font-label-md text-label-md text-on-surface mb-2"
+                                    for="confirm_password">Confirm Password</label>
+                                <input
+                                    class="w-full h-12 px-4 rounded-lg border border-outline-variant focus:border-tertiary-container focus:ring-2 focus:ring-tertiary-container/10 transition-all outline-none text-body-md"
+                                    id="confirm_password" name="confirm_password" placeholder="••••••••"
+                                    type="password" required />
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Section: Location & Language -->
+                    <section>
+                        <h2
+                            class="font-headline-sm text-headline-sm text-primary-container border-b border-outline-variant pb-2 mb-md flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[20px]">location_on</span>
+                            Location &amp; Preference
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+                            <div>
+                                <label class="block font-label-md text-label-md text-on-surface mb-2"
+                                    for="state">State</label>
+                                <select
+                                    class="w-full h-12 px-4 rounded-lg border border-outline-variant focus:border-tertiary-container focus:ring-2 focus:ring-tertiary-container/10 transition-all outline-none text-body-md appearance-none bg-white"
+                                    id="state" name="state" required>
+                                    <option disabled="" selected="" value="">Select State</option>
+                                    <option value="maharashtra">Maharashtra</option>
+                                    <option value="telangana">Telangana</option>
+                                    <option value="delhi">Delhi</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block font-label-md text-label-md text-on-surface mb-2"
+                                    for="district">District</label>
+                                <select
+                                    class="w-full h-12 px-4 rounded-lg border border-outline-variant focus:border-tertiary-container focus:ring-2 focus:ring-tertiary-container/10 transition-all outline-none text-body-md appearance-none bg-white"
+                                    id="district" name="district" required>
+                                    <option disabled="" selected="" value="">Select District</option>
+                                    <option value="mumbai">Mumbai City</option>
+                                    <option value="pune">Pune</option>
+                                    <option value="hyderabad">Hyderabad</option>
+                                </select>
+                            </div>
+                            <div class="md:col-span-2 relative">
+                                <label class="block font-label-md text-label-md text-on-surface mb-2"
+                                    for="constituency">Constituency</label>
+                                <div class="relative">
+                                    <input
+                                        class="w-full h-12 pl-12 pr-4 rounded-lg border border-outline-variant focus:border-tertiary-container focus:ring-2 focus:ring-tertiary-container/10 transition-all outline-none text-body-md"
+                                        id="constituency" name="constituency"
+                                        placeholder="Search and select constituency..." type="text" required />
+                                    <span
+                                        class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </section>
+                    <!-- Footer Note -->
+                    <div class="bg-surface-container-low p-4 rounded-lg flex gap-3">
+                        <span class="material-symbols-outlined text-tertiary-container">shield</span>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">
+                            <strong>Security Note:</strong> Your personal information is securely stored and will only
+                            be used for constituency development services.
+                        </p>
+                    </div>
+                    <!-- Actions -->
+                    <div class="flex flex-col md:flex-row gap-4 pt-md">
+                        <button
+                            class="flex-1 h-14 bg-primary-container text-white rounded-lg font-label-md text-label-md hover:bg-black transition-all admin-shadow active:scale-[0.98]"
+                            type="submit">
+                            Create Account
+                        </button>
+                        
+
+                        
+                    </div>
+                    <div class="text-center pt-md">
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">
+                            Already have an account?
+                            <a class="text-primary-container font-bold hover:underline" href="{{url_for('citizen_login')}}">Login</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-surface-container-highest dark:bg-primary-container w-full py-lg px-gutter">
+        <div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-md">
+            <div class="font-headline-sm text-headline-sm font-bold text-on-surface dark:text-on-primary-container">
+                People's Priorities AI
+            </div>
+            <p class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-primary-container">
+                © 2024 People's Priorities AI. All rights reserved.
+            </p>
+            <div class="flex gap-md">
+                <a class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-primary-container hover:underline"
+                    href="#">Privacy Policy</a>
+                <a class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-primary-container hover:underline"
+                    href="#">Terms of Service</a>
+                <a class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-primary-container hover:underline"
+                    href="#">Accessibility</a>
+                <a class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-primary-container hover:underline"
+                    href="#">Site Map</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        
+
+        // Constituency "Searchable" logic placeholder
+        const constituencyInput = document.getElementById('constituency');
+        const mockConstituencies = ['North Delhi', 'South Mumbai', 'Pune Cantonment', 'Hyderabad East', 'Bangalore Central'];
+
+        constituencyInput.addEventListener('input', (e) => {
+            const val = e.target.value.toLowerCase();
+            if (val.length > 1) {
+                // Here you would normally show a dropdown list of filtered results
+                console.log('Filtering constituencies for:', val);
+            }
+        });
+
+        
+    </script>
+</body>
+
+</html>
