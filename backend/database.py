@@ -5,10 +5,13 @@ import os
 load_dotenv()
 
 def get_db_connection():
-    connection=mysql.connector.connect(
-        host = os.getenv("DB_HOST"),
-        user = os.getenv("DB_USER"),
-        password = os.getenv("DB_PASSWORD"),
-        database = os.getenv("DB_NAME")
+    connection = mysql.connector.connect(
+        host=os.getenv("DB_HOST"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        database=os.getenv("DB_NAME"),
+        ssl_ca=os.path.join(os.path.dirname(__file__), "ca", "ca.pem"),
+        ssl_verify_cert=True
     )
     return connection
+
