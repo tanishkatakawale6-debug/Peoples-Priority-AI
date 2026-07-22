@@ -39,7 +39,7 @@ def citizen_login():
         cursor = conn.cursor(dictionary=True)
 
         cursor.execute(
-            "SELECT * FROM citizens WHERE email=%s AND password=%s",
+            "SELECT * FROM CITIZENS WHERE email=%s AND password=%s",
             (email, password)
         )
 
@@ -113,7 +113,7 @@ def citizen_dashboard():
         category,
         status,
         created_at
-    FROM suggestions
+    FROM SUGGESTIONS
     WHERE citizen_id=%s
     ORDER BY created_at DESC
     LIMIT 5
@@ -129,7 +129,7 @@ def citizen_dashboard():
         category,
         ai_priority_score,
         status
-    FROM suggestions
+    FROM SUGGESTIONS
     ORDER BY ai_priority_score DESC
     LIMIT 5
     """)
@@ -139,7 +139,7 @@ def citizen_dashboard():
     # Total Submitted
     cursor.execute("""
     SELECT COUNT(*) AS total
-    FROM suggestions
+    FROM SUGGESTIONS
     WHERE citizen_id=%s
     """, (citizen_id,))
     total_submitted = cursor.fetchone()["total"]
@@ -147,7 +147,7 @@ def citizen_dashboard():
     # Pending
     cursor.execute("""
     SELECT COUNT(*) AS pending
-    FROM suggestions
+    FROM SUGGESTIONS
     WHERE citizen_id=%s
     AND status='Pending'
     """, (citizen_id,))
@@ -156,7 +156,7 @@ def citizen_dashboard():
     # Resolved
     cursor.execute("""
     SELECT COUNT(*) AS resolved
-    FROM suggestions
+    FROM SUGGESTIONS
     WHERE citizen_id=%s
     AND status='Resolved'
     """, (citizen_id,))
@@ -285,7 +285,7 @@ def submit_suggestion():
         cursor = conn.cursor()
 
         cursor.execute("""
-        INSERT INTO suggestions
+        INSERT INTO SUGGESTIONS
         (
             citizen_id,
             title,
@@ -342,7 +342,7 @@ def admin_login():
         cursor = conn.cursor(dictionary=True)
 
         cursor.execute(
-            "SELECT * FROM admins WHERE email=%s AND password=%s",
+            "SELECT * FROM ADMINS WHERE email=%s AND password=%s",
             (email, password)
         )
 
@@ -368,20 +368,20 @@ def admin_dashboard():
     cursor = conn.cursor(dictionary=True)
 
     # Total Suggestions
-    cursor.execute("SELECT COUNT(*) AS total FROM suggestions")
+    cursor.execute("SELECT COUNT(*) AS total FROM SUGGESTIONS")
     total_suggestions = cursor.fetchone()["total"]
 
     # Pending Review
-    cursor.execute("SELECT COUNT(*) AS pending FROM suggestions WHERE status='Pending'")
+    cursor.execute("SELECT COUNT(*) AS pending FROM SUGGESTIONS WHERE status='Pending'")
     pending_review = cursor.fetchone()["pending"]
 
     # High Priority (AI score >= 80)
-    cursor.execute("SELECT COUNT(*) AS total FROM suggestions WHERE AI_PRIORITY_SCORE >= 80")
+    cursor.execute("SELECT COUNT(*) AS total FROM SUGGESTIONS WHERE AI_PRIORITY_SCORE >= 80")
     high_priority = cursor.fetchone()["total"]
    
 
     # Resolved Suggestions
-    cursor.execute("SELECT COUNT(*) AS resolved FROM suggestions WHERE status='Resolved'")
+    cursor.execute("SELECT COUNT(*) AS resolved FROM SUGGESTIONS WHERE status='Resolved'")
     resolved = cursor.fetchone()["resolved"]
 
     cursor.execute("""
@@ -397,7 +397,7 @@ def admin_dashboard():
         ai_category,
         ai_priority_score,
         ai_summary
-    FROM suggestions
+    FROM SUGGESTIONS
     ORDER BY ai_priority_score DESC
     """)
 
@@ -407,7 +407,7 @@ def admin_dashboard():
     SELECT
         category,
         COUNT(*) AS total
-    FROM suggestions
+    FROM SUGGESTIONS
     GROUP BY category
     ORDER BY total DESC
     """)
@@ -424,7 +424,7 @@ def admin_dashboard():
         latitude,
         longitude,
         ai_priority_score
-    FROM suggestions
+    FROM SUGGESTIONS
     WHERE latitude IS NOT NULL
     AND longitude IS NOT NULL
     """)
@@ -463,7 +463,7 @@ def run_simulation():
 
     cursor.execute("""
     SELECT AVG(ai_priority_score) AS avg_score
-    FROM suggestions
+    FROM SUGGESTIONS
     WHERE category = %s
     """, (category,))
 
@@ -507,7 +507,7 @@ def update_status():
     cursor = conn.cursor()
 
     cursor.execute("""
-        UPDATE suggestions
+        UPDATE SUGGESTIONS
         SET STATUS = %s
         WHERE suggestion_id = %s
     """, (status, suggestion_id))
