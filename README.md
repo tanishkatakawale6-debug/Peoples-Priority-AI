@@ -57,6 +57,16 @@ The platform aims to improve communication between citizens and administrators b
 
 The application is deployed using Render, with Aiven used for cloud database hosting and Cloudinary used for media storage.
 
+## Demo Admin Credentials
+
+Use the following credentials to access the Admin Dashboard:
+
+Admin email: Admin69@parliament.gov
+Password: 1223
+
+Note: These are demo credentials provided for testing the deployed application.
+
+
 ## Author
 
 Tanishka Takawale
