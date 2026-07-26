@@ -246,27 +246,7 @@
         });
 
 
-        function toggleLanguageMenu() {
-            document.getElementById("lang-menu").classList.toggle("hidden");
-        }
-
-        function changeLanguage(language) {
-            document.getElementById("selected-language").innerText = language;
-            document.getElementById("lang-menu").classList.add("hidden");
-
-            // Later, we will integrate actual translation here.
-            console.log("Selected Language:", language);
-        }
-
-        // Close dropdown if clicked outside
-        window.addEventListener("click", function (event) {
-            const menu = document.getElementById("lang-menu");
-            const button = document.querySelector("#selected-language").parentElement;
-
-            if (!button.contains(event.target) && !menu.contains(event.target)) {
-                menu.classList.add("hidden");
-            }
-        });
+        
     </script>
 
 

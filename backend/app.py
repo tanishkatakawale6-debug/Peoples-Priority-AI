@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for,request, js
 from database import get_db_connection
 from werkzeug.utils import secure_filename
 import google.generativeai as genai
+import cloudinary
+import cloudinary.uploader
 import os
 from dotenv import load_dotenv
 
@@ -10,6 +12,12 @@ app=Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY")
 
 load_dotenv()
+
+cloudinary.config(
+    cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.getenv("CLOUDINARY_API_KEY"),
+    api_secret=os.getenv("CLOUDINARY_API_SECRET")
+)
 
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
@@ -35,13 +43,16 @@ def citizen_login():
         email = request.form['email']
         password = request.form['password']
 
+
         conn = get_db_connection()
+
         cursor = conn.cursor(dictionary=True)
 
         cursor.execute(
             "SELECT * FROM CITIZENS WHERE email=%s AND password=%s",
             (email, password)
         )
+
 
         citizen = cursor.fetchone()
 
@@ -188,7 +199,6 @@ def citizen_dashboard():
 
 
 @app.route('/submit-suggestion', methods=['GET', 'POST'])
-
 def submit_suggestion():
 
     if "citizen_id" not in session:
@@ -197,11 +207,14 @@ def submit_suggestion():
     citizen_id = session["citizen_id"]
 
     if request.method == 'POST':
+
         category = request.form['category']
         title = request.form['title']
         description = request.form['description']
         latitude = request.form.get("latitude")
         longitude = request.form.get("longitude")
+
+        # ---------------- AI ANALYSIS ----------------
 
         prompt = f"""
         You are an AI assistant for a citizen grievance portal.
@@ -245,7 +258,6 @@ def submit_suggestion():
 
         ai_output = response.text
 
-
         lines = ai_output.strip().split("\n")
 
         ai_category = ""
@@ -258,28 +270,49 @@ def submit_suggestion():
                 ai_category = line.replace("AI_CATEGORY:", "").strip()
 
             elif line.startswith("PRIORITY_SCORE:"):
-                ai_priority_score = int(line.replace("PRIORITY_SCORE:", "").strip())
+                ai_priority_score = int(
+                    line.replace("PRIORITY_SCORE:", "").strip()
+                )
 
             elif line.startswith("SUMMARY:"):
                 ai_summary = line.replace("SUMMARY:", "").strip()
 
-        
-        location = request.form['location']
-        image = request.files['image']
-        voice = request.files['voice']
+        # ---------------- FORM DATA ----------------
 
+        location = request.form['location']
+
+        image = request.files.get('image')
+        voice = request.files.get('voice')
+
+        # Default empty URLs
         image_path = ""
         voice_path = ""
 
+        # ---------------- CLOUDINARY IMAGE UPLOAD ----------------
+
         if image and image.filename != "":
-            image_filename = secure_filename(image.filename)
-            image.save(os.path.join(app.config['IMAGE_UPLOAD_FOLDER'], image_filename))
-            image_path = "uploads/images/" + image_filename
+
+            image_result = cloudinary.uploader.upload(
+                image,
+                folder="peoples_priority_ai/images",
+                resource_type="image"
+            )
+
+            image_path = image_result.get("secure_url", "")
+
+        # ---------------- CLOUDINARY VOICE UPLOAD ----------------
 
         if voice and voice.filename != "":
-            voice_filename = secure_filename(voice.filename)
-            voice.save(os.path.join(app.config['VOICE_UPLOAD_FOLDER'], voice_filename))
-            voice_path = "uploads/voices/" + voice_filename
+
+            voice_result = cloudinary.uploader.upload(
+                voice,
+                folder="peoples_priority_ai/voices",
+                resource_type="video"
+            )
+
+            voice_path = voice_result.get("secure_url", "")
+
+        # ---------------- DATABASE INSERT ----------------
 
         conn = get_db_connection()
         cursor = conn.cursor()
@@ -318,7 +351,7 @@ def submit_suggestion():
             voice_path,
             "Pending"
         ))
-                
+
         conn.commit()
 
         cursor.close()
@@ -326,9 +359,11 @@ def submit_suggestion():
 
         return redirect(url_for('citizen_dashboard'))
 
-    return render_template('submit-suggestion.html',
-    citizen_name=session.get("citizen_name"),
-    citizen_email=session.get("citizen_email"))
+    return render_template(
+        'submit-suggestion.html',
+        citizen_name=session.get("citizen_name"),
+        citizen_email=session.get("citizen_email")
+    )
 
 @app.route('/admin-login', methods=['GET', 'POST'])
 def admin_login():
